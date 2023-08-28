@@ -27,7 +27,7 @@ class UserTest extends TestCase
 
     public function test_show(): void
     {
-        $user = User::inRandomOrder()->first();
+        $user = User::factory()->create();
 
         $response = $this->getJson('/api/users/' . $user->id);
 
