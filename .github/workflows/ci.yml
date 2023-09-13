@@ -21,6 +21,12 @@ jobs:
       with:
         fetch-depth: 1
  
+    - name: Setup MySQL
+      run: |
+        mysql -u root -e "CREATE DATABASE test;"
+        mysql -u root -e "CREATE USER root2@localhost IDENTIFIED WITH mysql_native_password BY 'password';"
+        mysql -u root -e "GRANT ALL ON test.* TO root2@localhost;"
+
     - name: Install composer dependencies
       run: |
         composer install --no-scripts
