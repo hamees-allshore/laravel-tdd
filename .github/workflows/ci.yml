@@ -2,7 +2,6 @@ on: push
 name: CI
 jobs:
   phpunit:
-    version: '3.1'
     runs-on: ubuntu-latest
     container:
       image: bitnami/laravel
@@ -10,9 +9,8 @@ jobs:
     services:
       mysql:
         image: mysql:8.0
-        command: --default-authentication-plugin=mysql_native_password
         env:
-          MYSQL_ROOT_PASSWORD: password
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_DATABASE: test
         ports:
           - 33306:3306
