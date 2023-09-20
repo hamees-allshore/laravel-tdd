@@ -41,6 +41,16 @@ class UserTest extends TestCase
                             ->where('email', $user->email)
                             ->missing('password')
                             ->etc();
+                    })
+                    ->has('feeds')
+                    ->has('feeds', function (AssertableJson $json) {
+                        return $json->has('WEB')
+                            ->has('WEB.0', function (AssertableJson $json) {
+                                return $json->where('title', " HubL Syntax - HubSpot Developers\n                     HubSpot Developers \n                ")
+                                    ->has('url')
+                                    ->has('description');
+                            })
+                            ->etc();
                     });
             });
     }

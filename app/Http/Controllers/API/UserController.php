@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Services\GoogleAlertService;
 
 class UserController extends Controller
 {
@@ -20,7 +21,10 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return ['user' => $user];
+        return [
+            'user' => $user,
+            'feeds' => (new GoogleAlertService)->getAllFeeds($user->name),
+        ];
     }
 
 }
