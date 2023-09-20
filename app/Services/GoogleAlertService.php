@@ -20,7 +20,7 @@ class GoogleAlertService
 
     public function getAllFeeds($keyword)
     {
-        $params = urlencode('[null,[null,null,null,[null,"' . $keyword . '","com",[null,"en","US"],null,null,null,0,1],null,3,[[null,1,"user@example.com",[null,null,11],2,"en-US",null,null,null,null,null,"0",null,null,"AB2Xq4hcilCERh73EFWJVHXx-io2lhh1EhC8UD8"]]],0]');
+        $params = ('[null,[null,null,null,[null,"' . $keyword . '","com",[null,"en","US"],null,null,null,0,1],null,3,[[null,1,"user@example.com",[null,null,11],2,"en-US",null,null,null,null,null,"0",null,null,"AB2Xq4hcilCERh73EFWJVHXx-io2lhh1EhC8UD8"]]],0]');
         $response = Http::get("https://www.google.com/alerts/preview", [
             'params' => $params,
         ]);
